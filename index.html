@@ -257,30 +257,22 @@
             font-size: 0.9rem;
         }
 
-        /* User Info */
-        .user-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* User Info Display */
+        .user-info-display {
             padding: 15px;
             background: #e0f7fa;
             border-radius: 10px;
             margin-bottom: 20px;
+            text-align: left;
         }
 
-        .user-name {
+        .user-info-display p {
+            margin: 5px 0;
             color: #00838f;
-            font-weight: 600;
         }
 
-        .logout-btn {
-            background: #ff7043;
-            padding: 8px 20px;
-            font-size: 0.9rem;
-        }
-
-        .logout-btn:hover {
-            background: #f4511e;
+        .user-info-display strong {
+            color: #333;
         }
 
         /* Hidden Sections */
@@ -313,7 +305,7 @@
         }
 
         /* Responsive Design */
-        max-width: 600px {
+        @media (max-width: 600px) {
             .container {
                 padding: 15px;
             }
@@ -336,7 +328,8 @@
                 flex-direction: column;
             }
 
-            .stats {grid-template-columns: 1fr;
+            .stats {
+                grid-template-columns: 1fr;
             }
 
             .score-circle {
@@ -354,7 +347,7 @@
             }
         }
 
-        min-width: 601px and (max-width: 1024px) {
+        @media (min-width: 601px) and (max-width: 1024px) {
             .container {
                 max-width: 700px;
             }
@@ -378,23 +371,6 @@
 
         .card {
             animation: fadeIn 0.5s ease;
-        }
-
-        /* Toggle Password */
-        .password-container {
-            position: relative;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #00838f;
-            background: none;
-            border: none;
-            font-size: 1.2rem;
         }
 
         /* Question Navigation */
@@ -434,6 +410,23 @@
             color: white;
             border-color: #4db6ac;
         }
+
+        /* Print styles for results */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                max-width: 100%;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            .nav-buttons, .question-nav {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -443,41 +436,40 @@
             <p>Раздел 7: Темы 75-85</p>
         </header>
 
-        <!-- Registration Section -->
-        <div id="auth-section" class="card">
-            <h2 id="auth-title">Регистрация</h2>
-            <form id="auth-form">
+        <!-- Start Section: User Info Input -->
+        <div id="start-section" class="card">
+            <h2>Информация о студенте</h2>
+            <form id="user-info-form">
                 <div class="form-group">
-                    <label for="username">Имя пользователя</label>
-                    <input type="text" id="username" required minlength="3" placeholder="Введите имя">
+                    <label for="fullname">ФИО *</label>
+                    <input type="text" id="fullname" required minlength="5" placeholder="Иванов Иван Иванович">
                 </div>
                 <div class="form-group">
-                    <label for="password">Пароль</label>
-                    <div class="password-container">
-                        <input type="password" id="password" required minlength="4" placeholder="Введите пароль">
-                        <button type="button" class="toggle-password" onclick="togglePassword()">Show</button>
-                    </div>
+                    <label for="group">Группа *</label>
+                    <input type="text" id="group" required placeholder="Например: ПИ-201">
                 </div>
-                <div id="auth-message"></div>
-                <button type="submit" class="btn" id="auth-btn">Зарегистрироваться</button>
+                <div class="form-group">
+                    <label for="institution">Учреждение *</label>
+                    <input type="text" id="institution" required placeholder="Например: МГУ им. М.В. Ломоносова">
+                </div>
+                <div id="start-message"></div>
+                <button type="submit" class="btn">Начать тест</button>
             </form>
-            <p style="text-align: center; margin-top: 15px; color: #666;">
-                <span id="auth-toggle-text">Уже есть аккаунт?</span>
-                <a href="#" onclick="toggleAuthMode()" style="color: #00acc1;">Войти</a>
-            </p>
         </div>
 
         <!-- Main App Section -->
         <div id="app-section" class="hidden">
-            <div class="user-info">
-                <span class="user-name">Пользователь: <span id="display-username">Пользователь</span></span>
-                <button class="btn logout-btn"onclick="logout()">Выйти</button>
-            </div>
-
             <!-- Menu -->
             <div id="menu-section" class="card">
                 <h2>Главное меню</h2>
-                <div class="stats" id="user-stats">
+                
+                <div class="user-info-display">
+                    <p><strong>ФИО:</strong> <span id="display-fullname"></span></p>
+                    <p><strong>Группа:</strong> <span id="display-group"></span></p>
+                    <p><strong>Учреждение:</strong> <span id="display-institution"></span></p>
+                </div>
+                
+                <div class="stats">
                     <div class="stat-item">
                         <div class="stat-value" id="tests-taken">0</div>
                         <div class="stat-label">Пройдено тестов</div>
@@ -528,6 +520,13 @@
                     <div class="score-circle" id="final-score">0%</div>
                     <h2 class="result-message" id="result-message"></h2>
                     
+                    <!-- User Info in Results -->
+                    <div class="user-info-display" style="text-align: center;">
+                        <p><strong>ФИО:</strong> <span id="result-fullname"></span></p>
+                        <p><strong>Группа:</strong> <span id="result-group"></span></p>
+                        <p><strong>Учреждение:</strong> <span id="result-institution"></span></p>
+                    </div>
+                    
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-value" id="correct-answers">0</div>
@@ -546,6 +545,7 @@
                     <div class="nav-buttons">
                         <button class="btn btn-secondary" onclick="showMenu()">В меню</button>
                         <button class="btn" onclick="startQuiz()">Пройти ещё раз</button>
+                        <button class="btn btn-secondary" onclick="window.print()">🖨️ Печать</button>
                     </div>
                 </div>
             </div>
@@ -558,7 +558,8 @@
             // Topic 75: Descriptive Statistics
             {
                 topic: 75,
-                question: "Что показывает среднее арифметическое?",options: ["Наиболее частое значение", "Центральную тенденцию данных", "Разброс данных", "Максимальное значение"],
+                question: "Что показывает среднее арифметическое?",
+                options: ["Наиболее частое значение", "Центральную тенденцию данных", "Разброс данных", "Максимальное значение"],
                 correct: 1
             },
             {
@@ -729,7 +730,8 @@
             {
                 topic: 84,
                 question: "График плотности нормального распределения имеет форму:",
-                options: ["Прямой линии", "Параболы", "Колокола (кривая Гаусса)", "Гиперболы"],correct: 2
+                options: ["Прямой линии", "Параболы", "Колокола (кривая Гаусса)", "Гиперболы"],
+                correct: 2
             },
             {
                 topic: 84,
@@ -747,109 +749,80 @@
         ];
 
         // State Variables
-        let currentUser = null;
-        let isLoginMode = false;
+        let currentUserInfo = null;
         let currentQuestionIndex = 0;
         let userAnswers = [];
         let quizStartTime = null;
-        let users = JSON.parse(localStorage.getItem('quizUsers')) || {};
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            checkAuth();
+            loadUserStats();
         });
 
-        // Auth Functions
-        function toggleAuthMode() {
-            isLoginMode = !isLoginMode;
-            document.getElementById('auth-title').textContent = isLoginMode ? 'Вход' : 'Регистрация';
-            document.getElementById('auth-btn').textContent = isLoginMode ? 'Войти' : 'Зарегистрироваться';
-            document.getElementById('auth-toggle-text').textContent = isLoginMode ? 'Нет аккаунта?' : 'Уже есть аккаунт?';
-            document.querySelector('#auth-section p a').textContent = isLoginMode ? 'Зарегистрироваться' : 'Войти';
-            document.getElementById('auth-message').textContent = '';
-        }
-
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-        }
-
-        document.getElementById('auth-form').addEventListener('submit', (e) => {
+        // Start Form Handler
+        document.getElementById('user-info-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const messageEl = document.getElementById('auth-message');
+            
+            const fullname = document.getElementById('fullname').value.trim();
+            const group = document.getElementById('group').value.trim();
+            const institution = document.getElementById('institution').value.trim();
+            const messageEl = document.getElementById('start-message');
 
-            if (isLoginMode) {
-                // Login
-                if (users[username] && users[username].password === password) {
-                    currentUser = username;
-                    localStorage.setItem('currentUser', username);
-                    showApp();
-                    messageEl.textContent = 'Вход выполнен успешно!';
-                    messageEl.className = 'success';
-                } else {
-                    messageEl.textContent = 'Неверное имя пользователя или пароль';
-                    messageEl.className = 'error';
-                }
-            } else {
-                // Register
-                if (users[username]) {
-                    messageEl.textContent = 'Пользователь уже существует';
-                    messageEl.className = 'error';
-                } else {
-                    users[username] = {
-                        password: password,
-                        testsTaken: 0,
-                        scores: [],
-                        bestScore: 0
-                    };
-                    localStorage.setItem('quizUsers', JSON.stringify(users));
-                    currentUser = username;
-                    localStorage.setItem('currentUser', username);
-                    showApp();
-                    messageEl.textContent = 'Регистрация успешна!';
-                    messageEl.className = 'success';
-                }
+            if (fullname.length < 5) {
+                messageEl.textContent = 'Пожалуйста, введите полное ФИО';
+                messageEl.className = 'error';
+                return;
             }
+
+            // Save user info
+            currentUserInfo = { fullname, group, institution };
+            
+            // Display in menu
+            document.getElementById('display-fullname').textContent = fullname;
+            document.getElementById('display-group').textContent = group;
+            document.getElementById('display-institution').textContent = institution;
+            
+            // Show app
+            document.getElementById('start-section').classList.add('hidden');
+            document.getElementById('app-section').classList.remove('hidden');
+            showMenu();
         });
 
-        function checkAuth() {
-            const savedUser = localStorage.getItem('currentUser');
-            if (savedUser && users[savedUser]) {
-                currentUser = savedUser;
-                showApp();
-            }
-        }
-
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('currentUser');document.getElementById('app-section').classList.add('hidden');
-            document.getElementById('auth-section').classList.remove('hidden');
-            document.getElementById('auth-form').reset();
-            document.getElementById('auth-message').textContent = '';
-        }
-
-        function showApp() {
-            document.getElementById('auth-section').classList.add('hidden');
-            document.getElementById('app-section').classList.remove('hidden');
-            document.getElementById('display-username').textContent = currentUser;
-            updateUserStats();
-            showMenu();
-        }
-
-        function updateUserStats() {
-            if (!currentUser || !users[currentUser]) return;
+        // Load stats from localStorage (by group+institution as identifier)
+        function loadUserStats() {
+            const stats = JSON.parse(localStorage.getItem('quizStats')) || {};
+            const key = getStatsKey();
+            const userStats = stats[key] || { testsTaken: 0, scores: [], bestScore: 0 };
             
-            const userData = users[currentUser];
-            document.getElementById('tests-taken').textContent = userData.testsTaken || 0;
-            document.getElementById('best-score').textContent = (userData.bestScore || 0) + '%';
+            document.getElementById('tests-taken').textContent = userStats.testsTaken;
+            document.getElementById('best-score').textContent = userStats.bestScore + '%';
             
-            const scores = userData.scores || [];
-            const avgScore = scores.length > 0 
-                ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) 
+            const avgScore = userStats.scores.length > 0 
+                ? Math.round(userStats.scores.reduce((a, b) => a + b, 0) / userStats.scores.length) 
                 : 0;
             document.getElementById('avg-score').textContent = avgScore + '%';
+        }
+
+        function getStatsKey() {
+            if (!currentUserInfo) return 'default';
+            return `${currentUserInfo.group}_${currentUserInfo.institution}`.replace(/[^a-zа-яё0-9]/gi, '_');
+        }
+
+        function saveUserStats(score) {
+            const stats = JSON.parse(localStorage.getItem('quizStats')) || {};
+            const key = getStatsKey();
+            
+            if (!stats[key]) {
+                stats[key] = { testsTaken: 0, scores: [], bestScore: 0 };
+            }
+            
+            stats[key].testsTaken++;
+            stats[key].scores.push(score);
+            if (score > stats[key].bestScore) {
+                stats[key].bestScore = score;
+            }
+            
+            localStorage.setItem('quizStats', JSON.stringify(stats));
         }
 
         // Menu Functions
@@ -857,11 +830,17 @@
             document.getElementById('menu-section').classList.remove('hidden');
             document.getElementById('quiz-section').classList.add('hidden');
             document.getElementById('results-section').classList.add('hidden');
-            updateUserStats();
+            loadUserStats();
         }
 
         // Quiz Functions
         function startQuiz() {
+            if (!currentUserInfo) {
+                document.getElementById('app-section').classList.add('hidden');
+                document.getElementById('start-section').classList.remove('hidden');
+                return;
+            }
+            
             currentQuestionIndex = 0;
             userAnswers = new Array(questions.length).fill(null);
             quizStartTime = new Date();
@@ -917,7 +896,8 @@
             // Update progress
             const answeredCount = userAnswers.filter(a => a !== null).length;
             const progress = (answeredCount / questions.length) * 100;
-            document.getElementById('progress-fill').style.width = progress + '%';document.getElementById('progress-text').textContent = Math.round(progress) + '% завершено';
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '% завершено';
             
             // Calculate current score
             let score = 0;
@@ -997,38 +977,38 @@
             const seconds = Math.floor((timeTaken % 60000) / 1000);
             
             // Save results
-            if (currentUser && users[currentUser]) {
-                users[currentUser].testsTaken = (users[currentUser].testsTaken || 0) + 1;
-                users[currentUser].scores = users[currentUser].scores || [];
-                users[currentUser].scores.push(score);
-                if (score > (users[currentUser].bestScore || 0)) {
-                    users[currentUser].bestScore = score;
-                }
-                localStorage.setItem('quizUsers', JSON.stringify(users));
+            if (currentUserInfo) {
+                saveUserStats(score);
             }
             
             // Display results
             document.getElementById('quiz-section').classList.add('hidden');
             document.getElementById('results-section').classList.remove('hidden');
             
-            document.getElementById('final-score').textContent = score + '%';document.getElementById('correct-answers').textContent = correctCount;
+            // User info in results
+            document.getElementById('result-fullname').textContent = currentUserInfo?.fullname || '';
+            document.getElementById('result-group').textContent = currentUserInfo?.group || '';
+            document.getElementById('result-institution').textContent = currentUserInfo?.institution || '';
+            
+            document.getElementById('final-score').textContent = score + '%';
+            document.getElementById('correct-answers').textContent = correctCount;
             document.getElementById('wrong-answers').textContent = questions.length - correctCount;
             document.getElementById('time-taken').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
             
             // Result message
             let message = '';
             if (score >= 90) {
-                message = 'Отлично! Превосходный результат!';
+                message = 'Отлично! Превосходный результат! ';
             } else if (score >= 70) {
-                message = 'Хорошо! Хорошая работа!';
+                message = 'Хорошо! Хорошая работа! ';
             } else if (score >= 50) {
-                message = 'Неплохо! Но можно лучше!';
+                message = 'Неплохо! Но можно лучше! ';
             } else {
-                message = 'Не сдавайтесь! Попробуйте ещё раз!';
+                message = 'Не сдавайтесь! Попробуйте ещё раз! ';
             }
             document.getElementById('result-message').textContent = message;
             
-            updateUserStats();
+            loadUserStats();
         }
     </script>
 </body>
