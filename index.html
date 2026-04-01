@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>РўРµСЃС‚: РўРµРѕСЂРёСЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚РµР№ Рё СЃС‚Р°С‚РёСЃС‚РёРєР°</title>
+    <title>Тест: Теория вероятностей и статистика</title>
     <style>
         * {
             margin: 0;
@@ -157,7 +157,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
+            display:flex;
             align-items: center;
         }
 
@@ -313,7 +313,7 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 600px) {
+        max-width: 600px {
             .container {
                 padding: 15px;
             }
@@ -336,8 +336,7 @@
                 flex-direction: column;
             }
 
-            .stats {
-                grid-template-columns: 1fr;
+            .stats {grid-template-columns: 1fr;
             }
 
             .score-circle {
@@ -355,7 +354,7 @@
             }
         }
 
-        @media (min-width: 601px) and (max-width: 1024px) {
+        min-width: 601px and (max-width: 1024px) {
             .container {
                 max-width: 700px;
             }
@@ -440,73 +439,73 @@
 <body>
     <div class="container">
         <header>
-            <h1>РўРµРѕСЂРёСЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚РµР№ Рё СЃС‚Р°С‚РёСЃС‚РёРєР°</h1>
-            <p>Р Р°Р·РґРµР» 7: РўРµРјС‹ 75-85</p>
+            <h1>Теория вероятностей и статистика</h1>
+            <p>Раздел 7: Темы 75-85</p>
         </header>
 
         <!-- Registration Section -->
         <div id="auth-section" class="card">
-            <h2 id="auth-title">Р РµРіРёСЃС‚СЂР°С†РёСЏ</h2>
+            <h2 id="auth-title">Регистрация</h2>
             <form id="auth-form">
                 <div class="form-group">
-                    <label for="username">РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</label>
-                    <input type="text" id="username" required minlength="3" placeholder="Р’РІРµРґРёС‚Рµ РёРјСЏ">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" required minlength="3" placeholder="Введите имя">
                 </div>
                 <div class="form-group">
-                    <label for="password">РџР°СЂРѕР»СЊ</label>
+                    <label for="password">Пароль</label>
                     <div class="password-container">
-                        <input type="password" id="password" required minlength="4" placeholder="Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ">
+                        <input type="password" id="password" required minlength="4" placeholder="Введите пароль">
                         <button type="button" class="toggle-password" onclick="togglePassword()">Show</button>
                     </div>
                 </div>
                 <div id="auth-message"></div>
-                <button type="submit" class="btn" id="auth-btn">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</button>
+                <button type="submit" class="btn" id="auth-btn">Зарегистрироваться</button>
             </form>
             <p style="text-align: center; margin-top: 15px; color: #666;">
-                <span id="auth-toggle-text">РЈР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚?</span>
-                <a href="#" onclick="toggleAuthMode()" style="color: #00acc1;">Р’РѕР№С‚Рё</a>
+                <span id="auth-toggle-text">Уже есть аккаунт?</span>
+                <a href="#" onclick="toggleAuthMode()" style="color: #00acc1;">Войти</a>
             </p>
         </div>
 
         <!-- Main App Section -->
         <div id="app-section" class="hidden">
             <div class="user-info">
-                <span class="user-name">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ: <span id="display-username">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ</span></span>
-                <button class="btn logout-btn" onclick="logout()">Р’С‹Р№С‚Рё</button>
+                <span class="user-name">Пользователь: <span id="display-username">Пользователь</span></span>
+                <button class="btn logout-btn"onclick="logout()">Выйти</button>
             </div>
 
             <!-- Menu -->
             <div id="menu-section" class="card">
-                <h2>Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ</h2>
+                <h2>Главное меню</h2>
                 <div class="stats" id="user-stats">
                     <div class="stat-item">
                         <div class="stat-value" id="tests-taken">0</div>
-                        <div class="stat-label">РџСЂРѕР№РґРµРЅРѕ С‚РµСЃС‚РѕРІ</div>
+                        <div class="stat-label">Пройдено тестов</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="best-score">0%</div>
-                        <div class="stat-label">Р›СѓС‡С€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚</div>
+                        <div class="stat-label">Лучший результат</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="avg-score">0%</div>
-                        <div class="stat-label">РЎСЂРµРґРЅРёР№ СЂРµР·СѓР»СЊС‚Р°С‚</div>
+                        <div class="stat-label">Средний результат</div>
                     </div>
                 </div>
-                <button class="btn" onclick="startQuiz()">РќР°С‡Р°С‚СЊ С‚РµСЃС‚</button>
+                <button class="btn" onclick="startQuiz()">Начать тест</button>
             </div>
 
             <!-- Quiz Section -->
             <div id="quiz-section" class="card hidden">
                 <div class="quiz-info">
-                    <span>Р’РѕРїСЂРѕСЃ <span id="current-question">1</span> РёР· <span id="total-questions">30</span></span>
-                    <span>Р‘Р°Р»Р»С‹: <span id="current-score">0</span></span>
+                    <span>Вопрос <span id="current-question">1</span> из <span id="total-questions">30</span></span>
+                    <span>Баллы: <span id="current-score">0</span></span>
                 </div>
 
                 <div class="progress-container">
                     <div class="progress-bar">
                         <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
                     </div>
-                    <div class="progress-text" id="progress-text">0% Р·Р°РІРµСЂС€РµРЅРѕ</div>
+                    <div class="progress-text" id="progress-text">0% завершено</div>
                 </div>
 
                 <div class="question-nav" id="question-nav"></div>
@@ -517,9 +516,9 @@
                 </div>
 
                 <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevQuestion()">РќР°Р·Р°Рґ</button>
-                    <button class="btn" id="next-btn" onclick="nextQuestion()">Р’РїРµСЂС‘Рґ</button>
-                    <button class="btn hidden" id="finish-btn" onclick="finishQuiz()">Р—Р°РІРµСЂС€РёС‚СЊ С‚РµСЃС‚</button>
+                    <button class="btn btn-secondary" onclick="prevQuestion()">Назад</button>
+                    <button class="btn" id="next-btn" onclick="nextQuestion()">Вперёд</button>
+                    <button class="btn hidden" id="finish-btn" onclick="finishQuiz()">Завершить тест</button>
                 </div>
             </div>
 
@@ -532,21 +531,21 @@
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-value" id="correct-answers">0</div>
-                            <div class="stat-label">РџСЂР°РІРёР»СЊРЅС‹С… РѕС‚РІРµС‚РѕРІ</div>
+                            <div class="stat-label">Правильных ответов</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-value" id="wrong-answers">0</div>
-                            <div class="stat-label">РќРµРїСЂР°РІРёР»СЊРЅС‹С… РѕС‚РІРµС‚РѕРІ</div>
+                            <div class="stat-label">Неправильных ответов</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-value" id="time-taken">0:00</div>
-                            <div class="stat-label">Р’СЂРµРјСЏ РїСЂРѕС…РѕР¶РґРµРЅРёСЏ</div>
+                            <div class="stat-label">Время прохождения</div>
                         </div>
                     </div>
 
                     <div class="nav-buttons">
-                        <button class="btn btn-secondary" onclick="showMenu()">Р’ РјРµРЅСЋ</button>
-                        <button class="btn" onclick="startQuiz()">РџСЂРѕР№С‚Рё РµС‰С‘ СЂР°Р·</button>
+                        <button class="btn btn-secondary" onclick="showMenu()">В меню</button>
+                        <button class="btn" onclick="startQuiz()">Пройти ещё раз</button>
                     </div>
                 </div>
             </div>
@@ -559,192 +558,190 @@
             // Topic 75: Descriptive Statistics
             {
                 topic: 75,
-                question: "Р§С‚Рѕ РїРѕРєР°Р·С‹РІР°РµС‚ СЃСЂРµРґРЅРµРµ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ?",
-                options: ["РќР°РёР±РѕР»РµРµ С‡Р°СЃС‚РѕРµ Р·РЅР°С‡РµРЅРёРµ", "Р¦РµРЅС‚СЂР°Р»СЊРЅСѓСЋ С‚РµРЅРґРµРЅС†РёСЋ РґР°РЅРЅС‹С…", "Р Р°Р·Р±СЂРѕСЃ РґР°РЅРЅС‹С…", "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"],
+                question: "Что показывает среднее арифметическое?",options: ["Наиболее частое значение", "Центральную тенденцию данных", "Разброс данных", "Максимальное значение"],
                 correct: 1
             },
             {
                 topic: 75,
-                question: "РњРѕРґР° вЂ” СЌС‚Рѕ:",
-                options: ["РЎСЂРµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ", "РќР°РёР±РѕР»РµРµ С‡Р°СЃС‚Рѕ РІСЃС‚СЂРµС‡Р°СЋС‰РµРµСЃСЏ Р·РЅР°С‡РµРЅРёРµ", "РЎСЂРµРґРЅРµРµ РјРµР¶РґСѓ РјРёРЅ Рё РјР°РєСЃ", "РЎСѓРјРјР° РІСЃРµС… Р·РЅР°С‡РµРЅРёР№"],
+                question: "Мода — это:",
+                options: ["Среднее значение", "Наиболее часто встречающееся значение", "Среднее между мин и макс", "Сумма всех значений"],
                 correct: 1
             },
             {
                 topic: 75,
-                question: "РњРµРґРёР°РЅР° РґРµР»РёС‚ СѓРїРѕСЂСЏРґРѕС‡РµРЅРЅС‹Р№ СЂСЏРґ РЅР°:",
-                options: ["РўСЂРё СЂР°РІРЅС‹Рµ С‡Р°СЃС‚Рё", "Р”РІРµ СЂР°РІРЅС‹Рµ С‡Р°СЃС‚Рё", "Р§РµС‚С‹СЂРµ СЂР°РІРЅС‹Рµ С‡Р°СЃС‚Рё", "РџСЏС‚СЊ СЂР°РІРЅС‹С… С‡Р°СЃС‚РµР№"],
+                question: "Медиана делит упорядоченный ряд на:",
+                options: ["Три равные части", "Две равные части", "Четыре равные части", "Пять равных частей"],
                 correct: 1
             },
             // Topic 76: Random Events
             {
                 topic: 76,
-                question: "РЎР»СѓС‡Р°Р№РЅРѕРµ СЃРѕР±С‹С‚РёРµ вЂ” СЌС‚Рѕ СЃРѕР±С‹С‚РёРµ, РєРѕС‚РѕСЂРѕРµ:",
-                options: ["Р’СЃРµРіРґР° РїСЂРѕРёСЃС…РѕРґРёС‚", "РќРёРєРѕРіРґР° РЅРµ РїСЂРѕРёСЃС…РѕРґРёС‚", "РњРѕР¶РµС‚ РїСЂРѕРёР·РѕР№С‚Рё, Р° РјРѕР¶РµС‚ РЅРµ РїСЂРѕРёР·РѕР№С‚Рё", "РџСЂРѕРёСЃС…РѕРґРёС‚ СЃ РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЊСЋ 1"],
+                question: "Случайное событие — это событие, которое:",
+                options: ["Всегда происходит", "Никогда не происходит", "Может произойти, а может не произойти", "Происходит с вероятностью 1"],
                 correct: 2
             },
             {
                 topic: 76,
-                question: "РџРµСЂРµСЃРµС‡РµРЅРёРµ СЃРѕР±С‹С‚РёР№ A Рё B РїСЂРѕРёСЃС…РѕРґРёС‚, РєРѕРіРґР°:",
-                options: ["РџСЂРѕРёСЃС…РѕРґРёС‚ С‚РѕР»СЊРєРѕ A", "РџСЂРѕРёСЃС…РѕРґРёС‚ С‚РѕР»СЊРєРѕ B", "РџСЂРѕРёСЃС…РѕРґСЏС‚ РѕР±Р° СЃРѕР±С‹С‚РёСЏ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ", "РќРµ РїСЂРѕРёСЃС…РѕРґРёС‚ РЅРё РѕРґРЅРѕ СЃРѕР±С‹С‚РёРµ"],
+                question: "Пересечение событий A и B происходит, когда:",
+                options: ["Происходит только A", "Происходит только B", "Происходят оба события одновременно", "Не происходит ни одно событие"],
                 correct: 2
             },
             {
                 topic: 76,
-                question: "РћР±СЉРµРґРёРЅРµРЅРёРµ СЃРѕР±С‹С‚РёР№ A Рё B РїСЂРѕРёСЃС…РѕРґРёС‚, РєРѕРіРґР°:",
-                options: ["РџСЂРѕРёСЃС…РѕРґРёС‚ С‚РѕР»СЊРєРѕ A", "РџСЂРѕРёСЃС…РѕРґРёС‚ С‚РѕР»СЊРєРѕ B", "РџСЂРѕРёСЃС…РѕРґРёС‚ A РёР»Рё B (РёР»Рё РѕР±Р°)", "РќРµ РїСЂРѕРёСЃС…РѕРґРёС‚ РЅРё A, РЅРё B"],
+                question: "Объединение событий A и B происходит, когда:",
+                options: ["Происходит только A", "Происходит только B", "Происходит A или B (или оба)", "Не происходит ни A, ни B"],
                 correct: 2
             },
             {
                 topic: 76,
-                question: "РџСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РЅРѕРµ СЃРѕР±С‹С‚РёРµ Рє A РѕР±РѕР·РЅР°С‡Р°РµС‚СЃСЏ:",
-                options: ["A в€Є B", "A в€© B", "ДЂ", "A + B"],
+                question: "Противоположное событие к A обозначается:",
+                options: ["A ∪ B", "A ∩ B", "Ā", "A + B"],
                 correct: 2
             },
             // Topic 77: Probability Classical Definition
             {
                 topic: 77,
-                question: "РљР»Р°СЃСЃРёС‡РµСЃРєР°СЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЊ СЂР°РІРЅР°:",
-                options: ["Р§РёСЃР»Сѓ Р±Р»Р°РіРѕРїСЂРёСЏС‚РЅС‹С… РёСЃС…РѕРґРѕРІ", "Р§РёСЃР»Сѓ РІСЃРµС… РёСЃС…РѕРґРѕРІ", "РћС‚РЅРѕС€РµРЅРёСЋ Р±Р»Р°РіРѕРїСЂРёСЏС‚РЅС‹С… РёСЃС…РѕРґРѕРІ РєРѕ РІСЃРµРј СЂР°РІРЅРѕРІРѕР·РјРѕР¶РЅС‹Рј", "РЎСѓРјРјРµ РІСЃРµС… РёСЃС…РѕРґРѕРІ"],
+                question: "Классическая вероятность равна:",
+                options: ["Числу благоприятных исходов", "Числу всех исходов", "Отношению благоприятных исходов ко всем равновозможным", "Сумме всех исходов"],
                 correct: 2
             },
             {
                 topic: 77,
-                question: "Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ РґРѕСЃС‚РѕРІРµСЂРЅРѕРіРѕ СЃРѕР±С‹С‚РёСЏ СЂР°РІРЅР°:",
+                question: "Вероятность достоверного события равна:",
                 options: ["0", "0.5", "1", "100"],
                 correct: 2
             },
             {
                 topic: 77,
-                question: "Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ РЅРµРІРѕР·РјРѕР¶РЅРѕРіРѕ СЃРѕР±С‹С‚РёСЏ СЂР°РІРЅР°:",
+                question: "Вероятность невозможного события равна:",
                 options: ["0", "0.5", "1", "-1"],
                 correct: 0
             },
             {
                 topic: 77,
-                question: "Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ Р»СЋР±РѕРіРѕ СЃР»СѓС‡Р°Р№РЅРѕРіРѕ СЃРѕР±С‹С‚РёСЏ РЅР°С…РѕРґРёС‚СЃСЏ РІ РїСЂРµРґРµР»Р°С…:",
-                options: ["РѕС‚ -1 РґРѕ 1", "РѕС‚ 0 РґРѕ 1", "РѕС‚ 0 РґРѕ 100", "РѕС‚ -в€ћ РґРѕ +в€ћ"],
+                question: "Вероятность любого случайного события находится в пределах:",
+                options: ["от -1 до 1", "от 0 до 1", "от 0 до 100", "от -∞ до +∞"],
                 correct: 1
             },
             // Topic 78: Main Theorems
             {
                 topic: 78,
-                question: "РўРµРѕСЂРµРјР° СЃР»РѕР¶РµРЅРёСЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚РµР№ РґР»СЏ РЅРµСЃРѕРІРјРµСЃС‚РЅС‹С… СЃРѕР±С‹С‚РёР№:",
-                options: ["P(A+B) = P(A) Г— P(B)", "P(A+B) = P(A) + P(B)", "P(A+B) = P(A) - P(B)", "P(A+B) = P(A) / P(B)"],
+                question: "Теорема сложения вероятностей для несовместных событий:",
+                options: ["P(A+B) = P(A) × P(B)", "P(A+B) = P(A) + P(B)", "P(A+B) = P(A) - P(B)", "P(A+B) = P(A) / P(B)"],
                 correct: 1
             },
             {
                 topic: 78,
-                question: "РўРµРѕСЂРµРјР° СѓРјРЅРѕР¶РµРЅРёСЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚РµР№ РґР»СЏ РЅРµР·Р°РІРёСЃРёРјС‹С… СЃРѕР±С‹С‚РёР№:",
-                options: ["P(AГ—B) = P(A) + P(B)", "P(AГ—B) = P(A) Г— P(B)", "P(AГ—B) = P(A) - P(B)", "P(AГ—B) = P(A) / P(B)"],
+                question: "Теорема умножения вероятностей для независимых событий:",
+                options: ["P(A×B) = P(A) + P(B)", "P(A×B) = P(A) × P(B)", "P(A×B) = P(A) - P(B)", "P(A×B) = P(A) / P(B)"],
                 correct: 1
             },
             {
                 topic: 78,
-                question: "РЎСѓРјРјР° РІРµСЂРѕСЏС‚РЅРѕСЃС‚РµР№ РїСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РЅС‹С… СЃРѕР±С‹С‚РёР№ СЂР°РІРЅР°:",
+                question: "Сумма вероятностей противоположных событий равна:",
                 options: ["0", "0.5", "1", "2"],
                 correct: 2
             },
             // Topic 79: Probability in Professional Tasks
             {
                 topic: 79,
-                question: "Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ РІ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… Р·Р°РґР°С‡Р°С… РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ:",
-                options: ["РўРѕС‡РЅРѕРіРѕ РїСЂРµРґСЃРєР°Р·Р°РЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°", "РћС†РµРЅРєРё СЂРёСЃРєР° Рё РїСЂРёРЅСЏС‚РёСЏ СЂРµС€РµРЅРёР№", "РСЃРєР»СЋС‡РµРЅРёСЏ РІСЃРµС… РѕС€РёР±РѕРє", "РЈРІРµР»РёС‡РµРЅРёСЏ РїСЂРёР±С‹Р»Рё РІСЃРµРіРґР°"],
+                question: "Вероятность в профессиональных задачах используется для:",
+                options: ["Точного предсказания результата", "Оценки риска и принятия решений", "Исключения всех ошибок", "Увеличения прибыливсегда"],
                 correct: 1
             },
             // Topic 80: Combinatorics
             {
                 topic: 80,
-                question: "РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° вЂ” СЌС‚Рѕ:",
-                options: ["Р’С‹Р±РѕСЂ СЌР»РµРјРµРЅС‚РѕРІ Р±РµР· СѓС‡С‘С‚Р° РїРѕСЂСЏРґРєР°", "Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РІ РѕРїСЂРµРґРµР»С‘РЅРЅРѕРј РїРѕСЂСЏРґРєРµ", "РЎСѓРјРјР° РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ", "РџСЂРѕРёР·РІРµРґРµРЅРёРµ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ"],
+                question: "Перестановка — это:",
+                options: ["Выбор элементов без учёта порядка", "Расположение элементов в определённом порядке", "Сумма всех элементов", "Произведение всех элементов"],
                 correct: 1
             },
             {
                 topic: 80,
-                question: "РЎРѕС‡РµС‚Р°РЅРёРµ РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ СЂР°Р·РјРµС‰РµРЅРёСЏ:",
-                options: ["РЈС‡РёС‚С‹РІР°РµС‚ РїРѕСЂСЏРґРѕРє СЌР»РµРјРµРЅС‚РѕРІ", "РќРµ СѓС‡РёС‚С‹РІР°РµС‚ РїРѕСЂСЏРґРѕРє СЌР»РµРјРµРЅС‚РѕРІ", "Р’СЃРµРіРґР° Р±РѕР»СЊС€Рµ СЂР°Р·РјРµС‰РµРЅРёСЏ", "Р’СЃРµРіРґР° РјРµРЅСЊС€Рµ РїРµСЂРµСЃС‚Р°РЅРѕРІРєРё"],
+                question: "Сочетание отличается от размещения:",
+                options: ["Учитывает порядок элементов", "Не учитывает порядок элементов", "Всегда больше размещения", "Всегда меньше перестановки"],
                 correct: 1
             },
             {
                 topic: 80,
-                question: "Р¤РѕСЂРјСѓР»Р° С‡РёСЃР»Р° РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє РёР· n СЌР»РµРјРµРЅС‚РѕРІ:",
-                options: ["n", "nВІ", "n!", "2вЃї"],
+                question: "Формула числа перестановок из n элементов:",
+                options: ["n", "n²", "n!", "2ⁿ"],
                 correct: 2
             },
             {
                 topic: 80,
-                question: "РЎРµСЂРёСЏ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅС‹С… РёСЃРїС‹С‚Р°РЅРёР№ Р‘РµСЂРЅСѓР»Р»Рё РїСЂРµРґРїРѕР»Р°РіР°РµС‚:",
-                options: ["Р—Р°РІРёСЃРёРјС‹Рµ РёСЃРїС‹С‚Р°РЅРёСЏ", "РќРµР·Р°РІРёСЃРёРјС‹Рµ РёСЃРїС‹С‚Р°РЅРёСЏ СЃ РґРІСѓРјСЏ РёСЃС…РѕРґР°РјРё", "РўСЂРё РІРѕР·РјРѕР¶РЅС‹С… РёСЃС…РѕРґР°", "Р‘РµСЃРєРѕРЅРµС‡РЅРѕРµ С‡РёСЃР»Рѕ РёСЃС…РѕРґРѕРІ"],
+                question: "Серия последовательных испытаний Бернулли предполагает:",
+                options: ["Зависимые испытания", "Независимые испытания с двумя исходами", "Три возможных исхода", "Бесконечное число исходов"],
                 correct: 1
             },
             // Topic 81: Random Variables
             {
                 topic: 81,
-                question: "Р”РёСЃРєСЂРµС‚РЅР°СЏ СЃР»СѓС‡Р°Р№РЅР°СЏ РІРµР»РёС‡РёРЅР° РїСЂРёРЅРёРјР°РµС‚:",
-                options: ["Р›СЋР±С‹Рµ Р·РЅР°С‡РµРЅРёСЏ РёР· РїСЂРѕРјРµР¶СѓС‚РєР°", "РћС‚РґРµР»СЊРЅС‹Рµ РёР·РѕР»РёСЂРѕРІР°РЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ", "РўРѕР»СЊРєРѕ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ", "РўРѕР»СЊРєРѕ РёСЂСЂР°С†РёРѕРЅР°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ"],
+                question: "Дискретная случайная величина принимает:",
+                options: ["Любые значения из промежутка", "Отдельные изолированные значения", "Только отрицательные значения", "Только иррациональные значения"],
                 correct: 1
             },
             {
                 topic: 81,
-                question: "РќРµРїСЂРµСЂС‹РІРЅР°СЏ СЃР»СѓС‡Р°Р№РЅР°СЏ РІРµР»РёС‡РёРЅР° РїСЂРёРЅРёРјР°РµС‚:",
-                options: ["РўРѕР»СЊРєРѕ С†РµР»С‹Рµ Р·РЅР°С‡РµРЅРёСЏ", "Р›СЋР±С‹Рµ Р·РЅР°С‡РµРЅРёСЏ РёР· РЅРµРєРѕС‚РѕСЂРѕРіРѕ РїСЂРѕРјРµР¶СѓС‚РєР°", "РўРѕР»СЊРєРѕ СЂР°С†РёРѕРЅР°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ", "РўРѕР»СЊРєРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ"],
+                question: "Непрерывная случайная величина принимает:",
+                options: ["Только целые значения", "Любые значения из некоторого промежутка", "Только рациональные значения", "Только положительные значения"],
                 correct: 1
             },
             {
                 topic: 81,
-                question: "Р—Р°РєРѕРЅ СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ СЃР»СѓС‡Р°Р№РЅРѕР№ РІРµР»РёС‡РёРЅС‹ РїРѕРєР°Р·С‹РІР°РµС‚:",
-                options: ["РўРѕР»СЊРєРѕ СЃСЂРµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ", "РЎРІСЏР·СЊ РјРµР¶РґСѓ Р·РЅР°С‡РµРЅРёСЏРјРё Рё РёС… РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЏРјРё", "РўРѕР»СЊРєРѕ РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ", "РўРѕР»СЊРєРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"],
+                question: "Закон распределения случайной величины показывает:",
+                options: ["Только среднее значение", "Связь между значениями и их вероятностями", "Только максимальное значение", "Только минимальное значение"],
                 correct: 1
             },
             // Topic 82: Mathematical Expectation
             {
                 topic: 82,
-                question: "РњР°С‚РµРјР°С‚РёС‡РµСЃРєРѕРµ РѕР¶РёРґР°РЅРёРµ РїРѕРєР°Р·С‹РІР°РµС‚:",
-                options: ["Р Р°Р·Р±СЂРѕСЃ Р·РЅР°С‡РµРЅРёР№", "РЎСЂРµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ СЃР»СѓС‡Р°Р№РЅРѕР№ РІРµР»РёС‡РёРЅС‹", "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ", "РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"],
+                question: "Математическое ожидание показывает:",
+                options: ["Разброс значений", "Среднее значение случайной величины", "Максимальное значение", "Минимальное значение"],
                 correct: 1
             },
             {
                 topic: 82,
-                question: "РњР°С‚РµРјР°С‚РёС‡РµСЃРєРѕРµ РѕР¶РёРґР°РЅРёРµ РїРѕСЃС‚РѕСЏРЅРЅРѕР№ C СЂР°РІРЅРѕ:",
-                options: ["0", "1", "C", "CВІ"],
+                question: "Математическое ожидание постоянной C равно:",
+                options: ["0", "1", "C", "C²"],
                 correct: 2
             },
             // Topic 83: Law of Large Numbers
             {
                 topic: 83,
-                question: "Р—Р°РєРѕРЅ Р±РѕР»СЊС€РёС… С‡РёСЃРµР» СѓС‚РІРµСЂР¶РґР°РµС‚, С‡С‚Рѕ РїСЂРё СѓРІРµР»РёС‡РµРЅРёРё С‡РёСЃР»Р° РёСЃРїС‹С‚Р°РЅРёР№:",
-                options: ["Р”РёСЃРїРµСЂСЃРёСЏ СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ", "РЎСЂРµРґРЅРµРµ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЃС‚СЂРµРјРёС‚СЃСЏ Рє РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕРјСѓ РѕР¶РёРґР°РЅРёСЋ", "Р’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ СЂР°РІРЅРѕР№ 0", "Р’СЃРµ Р·РЅР°С‡РµРЅРёСЏ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ РѕРґРёРЅР°РєРѕРІС‹РјРё"],
+                question: "Закон больших чисел утверждает, что при увеличении числа испытаний:",
+                options: ["Дисперсия увеличивается", "Среднее арифметическое стремится к математическому ожиданию", "Вероятность становится равной 0", "Все значения становятся одинаковыми"],
                 correct: 1
             },
             {
                 topic: 83,
-                question: "РџР»РѕС‚РЅРѕСЃС‚СЊ СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ РЅРµРїСЂРµСЂС‹РІРЅРѕР№ СЃР»СѓС‡Р°Р№РЅРѕР№ РІРµР»РёС‡РёРЅС‹:",
-                options: ["Р’СЃРµРіРґР° СЂР°РІРЅР° 1", "РРЅС‚РµРіСЂР°Р» РїРѕ РІСЃРµР№ РѕР±Р»Р°СЃС‚Рё СЂР°РІРµРЅ 1", "Р’СЃРµРіРґР° РїРѕР»РѕР¶РёС‚РµР»СЊРЅР°", "Р’СЃРµРіРґР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅР°"],
+                question: "Плотность распределения непрерывной случайной величины:",
+                options: ["Всегда равна 1", "Интеграл по всей области равен 1", "Всегда положительна", "Всегда отрицательна"],
                 correct: 1
             },
             // Topic 84: Normal Distribution
             {
                 topic: 84,
-                question: "РќРѕСЂРјР°Р»СЊРЅРѕРµ СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµ РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РїР°СЂР°РјРµС‚СЂР°РјРё:",
-                options: ["РњРёРЅРёРјСѓРј Рё РјР°РєСЃРёРјСѓРј", "РњР°С‚РµРјР°С‚РёС‡РµСЃРєРѕРµ РѕР¶РёРґР°РЅРёРµ Рё РґРёСЃРїРµСЂСЃРёСЏ", "РњРѕРґР° Рё РјРµРґРёР°РЅР°", "РџРµСЂС†РµРЅС‚РёР»Рё"],
+                question: "Нормальное распределение определяется параметрами:",
+                options: ["Минимум и максимум", "Математическое ожидание и дисперсия", "Мода и медиана", "Перцентили"],
                 correct: 1
             },
             {
                 topic: 84,
-                question: "Р“СЂР°С„РёРє РїР»РѕС‚РЅРѕСЃС‚Рё РЅРѕСЂРјР°Р»СЊРЅРѕРіРѕ СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ РёРјРµРµС‚ С„РѕСЂРјСѓ:",
-                options: ["РџСЂСЏРјРѕР№ Р»РёРЅРёРё", "РџР°СЂР°Р±РѕР»С‹", "РљРѕР»РѕРєРѕР»Р° (РєСЂРёРІР°СЏ Р“Р°СѓСЃСЃР°)", "Р“РёРїРµСЂР±РѕР»С‹"],
-                correct: 2
+                question: "График плотности нормального распределения имеет форму:",
+                options: ["Прямой линии", "Параболы", "Колокола (кривая Гаусса)", "Гиперболы"],correct: 2
             },
             {
                 topic: 84,
-                question: "РЎС‚Р°РЅРґР°СЂС‚РЅРѕРµ РЅРѕСЂРјР°Р»СЊРЅРѕРµ СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµ РёРјРµРµС‚ РїР°СЂР°РјРµС‚СЂС‹:",
+                question: "Стандартное нормальное распределение имеет параметры:",
                 options: ["M=0, D=1", "M=1, D=0", "M=1, D=1", "M=0, D=0"],
                 correct: 0
             },
             // Topic 85: Statistical Tasks
             {
                 topic: 85,
-                question: "РЎС‚Р°С‚РёСЃС‚РёС‡РµСЃРєР°СЏ Р·Р°РґР°С‡Р° РѕР±С‹С‡РЅРѕ РІРєР»СЋС‡Р°РµС‚:",
-                options: ["РўРѕР»СЊРєРѕ РІС‹С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґРЅРµРіРѕ", "РЎР±РѕСЂ, РѕР±СЂР°Р±РѕС‚РєСѓ Рё Р°РЅР°Р»РёР· РґР°РЅРЅС‹С…", "РўРѕР»СЊРєРѕ РїРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєРѕРІ", "РўРѕР»СЊРєРѕ РЅР°С…РѕР¶РґРµРЅРёРµ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё"],
+                question: "Статистическая задача обычно включает:",
+                options: ["Только вычисление среднего", "Сбор, обработку и анализ данных", "Только построение графиков", "Только нахождение вероятности"],
                 correct: 1
             }
         ];
@@ -765,10 +762,10 @@
         // Auth Functions
         function toggleAuthMode() {
             isLoginMode = !isLoginMode;
-            document.getElementById('auth-title').textContent = isLoginMode ? 'Р’С…РѕРґ' : 'Р РµРіРёСЃС‚СЂР°С†РёСЏ';
-            document.getElementById('auth-btn').textContent = isLoginMode ? 'Р’РѕР№С‚Рё' : 'Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ';
-            document.getElementById('auth-toggle-text').textContent = isLoginMode ? 'РќРµС‚ Р°РєРєР°СѓРЅС‚Р°?' : 'РЈР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚?';
-            document.querySelector('#auth-section p a').textContent = isLoginMode ? 'Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ' : 'Р’РѕР№С‚Рё';
+            document.getElementById('auth-title').textContent = isLoginMode ? 'Вход' : 'Регистрация';
+            document.getElementById('auth-btn').textContent = isLoginMode ? 'Войти' : 'Зарегистрироваться';
+            document.getElementById('auth-toggle-text').textContent = isLoginMode ? 'Нет аккаунта?' : 'Уже есть аккаунт?';
+            document.querySelector('#auth-section p a').textContent = isLoginMode ? 'Зарегистрироваться' : 'Войти';
             document.getElementById('auth-message').textContent = '';
         }
 
@@ -789,16 +786,16 @@
                     currentUser = username;
                     localStorage.setItem('currentUser', username);
                     showApp();
-                    messageEl.textContent = 'Р’С…РѕРґ РІС‹РїРѕР»РЅРµРЅ СѓСЃРїРµС€РЅРѕ!';
+                    messageEl.textContent = 'Вход выполнен успешно!';
                     messageEl.className = 'success';
                 } else {
-                    messageEl.textContent = 'РќРµРІРµСЂРЅРѕРµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё РїР°СЂРѕР»СЊ';
+                    messageEl.textContent = 'Неверное имя пользователя или пароль';
                     messageEl.className = 'error';
                 }
             } else {
                 // Register
                 if (users[username]) {
-                    messageEl.textContent = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
+                    messageEl.textContent = 'Пользователь уже существует';
                     messageEl.className = 'error';
                 } else {
                     users[username] = {
@@ -811,7 +808,7 @@
                     currentUser = username;
                     localStorage.setItem('currentUser', username);
                     showApp();
-                    messageEl.textContent = 'Р РµРіРёСЃС‚СЂР°С†РёСЏ СѓСЃРїРµС€РЅР°!';
+                    messageEl.textContent = 'Регистрация успешна!';
                     messageEl.className = 'success';
                 }
             }
@@ -827,8 +824,7 @@
 
         function logout() {
             currentUser = null;
-            localStorage.removeItem('currentUser');
-            document.getElementById('app-section').classList.add('hidden');
+            localStorage.removeItem('currentUser');document.getElementById('app-section').classList.add('hidden');
             document.getElementById('auth-section').classList.remove('hidden');
             document.getElementById('auth-form').reset();
             document.getElementById('auth-message').textContent = '';
@@ -921,8 +917,7 @@
             // Update progress
             const answeredCount = userAnswers.filter(a => a !== null).length;
             const progress = (answeredCount / questions.length) * 100;
-            document.getElementById('progress-fill').style.width = progress + '%';
-            document.getElementById('progress-text').textContent = Math.round(progress) + '% Р·Р°РІРµСЂС€РµРЅРѕ';
+            document.getElementById('progress-fill').style.width = progress + '%';document.getElementById('progress-text').textContent = Math.round(progress) + '% завершено';
             
             // Calculate current score
             let score = 0;
@@ -983,7 +978,7 @@
             // Check if all questions answered
             const unanswered = userAnswers.filter(a => a === null).length;
             if (unanswered > 0) {
-                if (!confirm(`Р’С‹ РЅРµ РѕС‚РІРµС‚РёР»Рё РЅР° ${unanswered} РІРѕРїСЂРѕСЃ(РѕРІ). Р—Р°РІРµСЂС€РёС‚СЊ С‚РµСЃС‚?`)) {
+                if (!confirm(`Вы не ответили на ${unanswered} вопрос(ов). Завершить тест?`)) {
                     return;
                 }
             }
@@ -1016,21 +1011,20 @@
             document.getElementById('quiz-section').classList.add('hidden');
             document.getElementById('results-section').classList.remove('hidden');
             
-            document.getElementById('final-score').textContent = score + '%';
-            document.getElementById('correct-answers').textContent = correctCount;
+            document.getElementById('final-score').textContent = score + '%';document.getElementById('correct-answers').textContent = correctCount;
             document.getElementById('wrong-answers').textContent = questions.length - correctCount;
             document.getElementById('time-taken').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
             
             // Result message
             let message = '';
             if (score >= 90) {
-                message = 'РћС‚Р»РёС‡РЅРѕ! РџСЂРµРІРѕСЃС…РѕРґРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚!';
+                message = 'Отлично! Превосходный результат!';
             } else if (score >= 70) {
-                message = 'РҐРѕСЂРѕС€Рѕ! РҐРѕСЂРѕС€Р°СЏ СЂР°Р±РѕС‚Р°!';
+                message = 'Хорошо! Хорошая работа!';
             } else if (score >= 50) {
-                message = 'РќРµРїР»РѕС…Рѕ! РќРѕ РјРѕР¶РЅРѕ Р»СѓС‡С€Рµ!';
+                message = 'Неплохо! Но можно лучше!';
             } else {
-                message = 'РќРµ СЃРґР°РІР°Р№С‚РµСЃСЊ! РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·!';
+                message = 'Не сдавайтесь! Попробуйте ещё раз!';
             }
             document.getElementById('result-message').textContent = message;
             
